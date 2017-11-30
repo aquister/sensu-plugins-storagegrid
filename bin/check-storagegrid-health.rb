@@ -13,7 +13,7 @@ class StorageGridHealth < Sensu::Plugin::Check::CLI
 
   option :username,
          short: '-u USERNAME',
-         long: '--user USERNAME',
+         long: '--username USERNAME',
          description: 'StorageGRID username (default: root)',
          required: false,
          default: 'root'
