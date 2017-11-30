@@ -3,7 +3,7 @@
 ## Functionality
 
 ## Files
- * bin/...
+ * bin/check-storagegrid-health.rb
 
 
 ## Usage

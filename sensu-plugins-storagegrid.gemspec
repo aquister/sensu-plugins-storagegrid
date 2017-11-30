@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.date                   = Date.today.to_s
   s.description            = 'This plugin provides monitoring for NetApp StorageGRID Webscale'
   s.email                  = '<sensu-users@googlegroups.com>'
-  s.files                  = Dir.glob('{bin,lib}/**/*.rb') + %w(LICENSE README.md CHANGELOG.md)
+  s.files                  = Dir.glob('{bin,lib}/**/*.rb') + %w[LICENSE README.md CHANGELOG.md]
   s.executables            = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
   s.homepage               = 'https://github.com/aquister/sensu-plugins-storagegrid'
   s.license                = 'MIT'
@@ -39,6 +39,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake',                      '~> 10.0'
   s.add_development_dependency 'redcarpet',                 '~> 3.2'
   s.add_development_dependency 'rspec',                     '~> 3.1'
-  s.add_development_dependency 'rubocop',                   '~> 0.40.0'
+  s.add_development_dependency 'rubocop',                   '~> 0.49.0'
   s.add_development_dependency 'yard',                      '~> 0.8'
 end
