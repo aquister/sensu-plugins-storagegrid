@@ -1,0 +1,29 @@
+language: ruby
+cache:
+  - bundler
+rvm:
+  - 2.1
+  - 2.2
+  - 2.3.0
+  - 2.4.1
+before_install:
+  - gem update bundler
+install:
+  - bundle install
+script:
+  - bundle exec rake default
+  - gem build sensu-plugins-storagegrid.gemspec
+  - gem install sensu-plugins-storagegrid-*.gem
+deploy:
+  provider: rubygems
+  gem: sensu-plugins-storagegrid
+  api_key:
+    secure: uHVm2hK5DrjLXKn7dND+V1+bQdiz2heLOXzZ8uEpo+UThz1VJXEGNLMt1AtEzXaGVbSgRHNNVEbH95lDZcbqfguxIVhuX6XkksMMeH78wG6moVLwOJuuLvqmDQg9CgTgF5cPZVhUFgaby7dvmi/0vP2NHPXMWLqAgHk684G1qutzbd44HI4eEI21BktIBE728osRGoEZvlJqbjvPc5//xHyKbCg1ippRQU54KJiRTXxRz58xgXqXOaaoCukmPmVTPOIAqB1jcwamO3zXU/I4BJu38Zql7/YrGAWU8K+EeQVMi1Jg8O1aily4xiDX1Dmy3s6z5sLa6DySpdoqWTKQRJsmR+DAQO8I66AHvAlsBOEJsqyDnCjmomIR7ETGKw8Jk3hhUc19Ose7X+gWoZJQF+UXaqtDHs8QuTHY21UsgEK92NcnBmuaTbrgVL01dmtcpulpyggXLubEdquO56C3St5FBE9Q/0BjvlAQge0FxS0q1DARdYncQZLjzOYW3Ph/ZbfsIUIjOHSCYl+0ijsTh+Ke4YwE6IsEcwSVSWafqapwyQFceZaMhlAJPL4yLw85zU2iCs41fSNdw9ei41T7Dk5PlOgH2AURx0/HMU1eQm6gbjaVnUFkGqLtDQNnrsooMUwZLgOUSy9aAILR0kn5ZXCgd6UE84RZ/34aa1dojYc=
+  on:
+    tags: true
+    all_branches: true
+    rvm: 2.1
+    rvm: 2.2
+    rvm: 2.3.0
+    rvm: 2.4.1
+    repo: aquister/sensu-plugins-storagegrid
