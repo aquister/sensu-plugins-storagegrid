@@ -61,13 +61,16 @@ class StorageGridHealth < Sensu::Plugin::Check::CLI
     health_alarms = health_req['data']['alarms']
     health_nodes = health_req['data']['nodes']
 
-    if health_alarms['critical'].to_i > 0 ||
-       health_alarms['major'].to_i > 0 ||
-       health_nodes['administratively-down'].to_i > 0 ||
-       health_nodes['unknown'].to_i > 0
-      critical
-    elsif health_alarms['minor'].to_i > 0
-      warning
+    alarms_crit = health_alarms['critical'].to_i
+    alarms_major = health_alarms['major'].to_i
+    alarms_minor = health_alarms['minor'].to_i
+    nodes_unknown = health_nodes['unknown'].to_i
+    nodes_ok_down = health_nodes['administratively-down'].to_i
+
+    if alarms_crit > 0 || nodes_unknown > 0
+      critical "Critical alarms: #{alarms_crit} - Offline nodes: #{nodes_unknown}"
+    elsif alarms_major > 0 || alarms_minor > 0 || nodes_ok_down > 0
+      warning "Major alarms: #{alarms_major} - Minor alarms: #{alarms_minor} - Offline nodes: #{nodes_ok_down}"
     else
       ok
     end
